@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const middleware = require('./middleware');
 require('dotenv').config();
 const loginRoutes = require('./routes/loginRoutes');
+const registerRoutes = require('./routes/registerRoutes');
 
 const app = express();
 
@@ -11,8 +12,9 @@ app.set('views', 'views');
 
 app.use(express.static('public'));
 
+// routes
+app.use('/regster', registerRoutes);
 app.use('/login', loginRoutes);
-//
 app.get('/', middleware.requireLogin, (req, res) => {
 	res.render('home', { pageTitle: 'Home' });
 });
