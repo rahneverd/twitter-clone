@@ -12,7 +12,7 @@ app.set('views', 'views');
 app.use(express.static('public'));
 
 app.use('/login', loginRoutes);
-
+//
 app.get('/', middleware.requireLogin, (req, res) => {
 	res.render('home', { pageTitle: 'Home' });
 });
