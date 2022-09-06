@@ -1,0 +1,17 @@
+extends templates/login-template.pug
+block content
+  .loginContainer
+    h1 Register
+    form(method="post")
+      input(type="text", name="firstName", placeholder="First Name", required="")
+      input(type="text", name="lastName", placeholder="Last Name", required="")
+      input(type="text", name="username", placeholder="Username", required="")
+      input(type="email", name="email", placeholder="Email", required="")
+      
+
+
+
+      input(type="text", name="username", placeholder="Username/Email", required="")
+      input(type="password", name="password", placeholder="Password", required="")
+      input(type="submit", value="Login")
+    a(href="/register") Need an account? Register here
