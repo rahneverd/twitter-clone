@@ -37,3 +37,6 @@ input[type='submit'] {
 	border-radius: 2px;
 	margin-bottom: 10px;
 }
+#errorMessage {
+	color: red;
+}
