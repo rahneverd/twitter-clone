@@ -20,6 +20,14 @@ app.get('/', middleware.requireLogin, (req, res) => {
 	res.render('home', { pageTitle: 'Home' });
 });
 
-app.listen(process.env.PORT, () => {
-	console.log(`Server is running on Port ${process.env.PORT}`);
-});
+// Connecting to DataBase
+mongoose
+	.connect(process.env.CONNECTION)
+	.then(() => {
+		app.listen(process.env.PORT, () => {
+			console.log(`Server is running on Port ${process.env.PORT}`);
+		});
+	})
+	.catch((err) => {
+		console.log(err);
+	});
