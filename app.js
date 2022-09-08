@@ -12,6 +12,7 @@ app.set('views', 'views');
 
 app.use(express.static('public'));
 
+app.use(express.urlencoded({ extended: false }));
 // routes
 app.use('/register', registerRoutes);
 app.use('/login', loginRoutes);
