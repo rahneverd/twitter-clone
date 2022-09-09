@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const middleware = require('../middleware');
-const User = require('../schemas/userSchema');
+const UserModelSchema = require('../schemas/userSchema');
 //
-router.get('/', middleware.notLoggedIn, (req, res) => {
-	res.render('register');
-});
+// router.get('/', middleware.notLoggedIn, (req, res) => {
+// 	res.render('register');
+// });
 
 router.post('/', middleware.notLoggedIn, (req, res) => {
 	let firstName = req.body.firstName.trim();
@@ -16,7 +16,7 @@ router.post('/', middleware.notLoggedIn, (req, res) => {
 	let payload = req.body;
 
 	if (firstName && lastName && username && email && password) {
-		User.findOne($or[({ username: username }, { email: email })])
+		UserModelSchema.findOne($or[({ username: username }, { email: email })])
 			.then((queriedUser) => {
 				if (username != queriedUser.username && email != queriedUser.email) {
 					// User registration here

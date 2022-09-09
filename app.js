@@ -14,11 +14,12 @@ app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: false }));
 // routes
-app.use('/register', registerRoutes);
-app.use('/login', loginRoutes);
-app.get('/', middleware.requireLogin, (req, res) => {
-	res.render('home', { pageTitle: 'Home' });
-});
+app.use('/', require('./router'));
+// app.use('/register', registerRoutes);
+// app.use('/login', loginRoutes);
+// app.get('/', middleware.requireLogin, (req, res) => {
+// 	res.render('home', { pageTitle: 'Home' });
+// });
 
 // Connecting to DataBase
 mongoose
