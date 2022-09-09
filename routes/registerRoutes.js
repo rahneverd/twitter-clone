@@ -16,20 +16,23 @@ router.post('/', middleware.notLoggedIn, (req, res) => {
 	let payload = req.body;
 
 	if (firstName && lastName && username && email && password) {
-		User.findOne({ username: username })
-			.then(() => {
-				User.findOne({ email: email })
-					.then(() => {
-						console.log('new user');
-					})
-					.catch(() => {
-						console.log('email exists');
-					});
+		User.findOne($or[({ username: username }, { email: email })])
+			.then((queriedUser) => {
+				if (username != queriedUser.username && email != queriedUser.email) {
+					// User registration here
+				} else if (username == queriedUser.email) {
+					payload.errorMessage = 'Username already exists';
+					res.render('register', payload);
+				} else {
+					payload.errorMessage = 'Email already exists';
+					res.render('register', payload);
+				}
 			})
-			.catch(() => {
-				console.log('username exists');
+			.catch((err) => {
+				console.log(err);
+				payload.errorMessage = 'Something weent wrong. Try againn later.';
+				res.render('register', payload);
 			});
-		res.render('register');
 	} else {
 		payload.errorMessage = 'Make sure each field has a valid value.';
 		res.render('register', payload);
