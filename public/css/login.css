@@ -40,3 +40,6 @@ input[type='submit'] {
 #errorMessage {
 	color: red;
 }
+#errorMessageArray {
+	color: red;
+}

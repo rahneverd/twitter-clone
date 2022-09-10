@@ -1,3 +1,5 @@
+const User = require('../models/User');
+
 exports.home = function () {
 	res.render('home');
 };
@@ -18,4 +20,13 @@ exports.notLoggedIn = function (req, res, next) {
 	}
 };
 
-exports.register = function (req, res) {};
+exports.register = function (req, res) {
+	user = new User(req.body);
+	console.log(user);
+	user
+		.register()
+		.then()
+		.catch((message) => {
+			res.render('register', { backendMessage: message });
+		});
+};
