@@ -2,24 +2,28 @@ const express = require('express');
 const mongoose = require('mongoose');
 const middleware = require('./middleware');
 require('dotenv').config();
-const loginRoutes = require('./routes/loginRoutes');
-const registerRoutes = require('./routes/registerRoutes');
-
+const session = require('express-session');
 const app = express();
 
+// Setting view engine
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
+// Setting Pubic folder
 app.use(express.static('public'));
 
+// Setting up bodyparser
 app.use(express.urlencoded({ extended: false }));
+
+// Setting up session
+app.use(
+	session({
+		secret: process.env.SECRET,
+	})
+);
+
 // routes
 app.use('/', require('./router'));
-// app.use('/register', registerRoutes);
-// app.use('/login', loginRoutes);
-// app.get('/', middleware.requireLogin, (req, res) => {
-// 	res.render('home', { pageTitle: 'Home' });
-// });
 
 // Connecting to DataBase
 mongoose
