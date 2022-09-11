@@ -106,4 +106,25 @@ User.prototype.register = function () {
 	});
 };
 
+User.prototype.login = function () {
+	return new Promise((resolve, reject) => {
+		this.cleanup();
+		usersCollection
+			.findOne({
+				$or: [{ username: this.data.username }, { email: this.data.username }],
+			})
+			.then((attemptedUser) => {
+				if (
+					attemptedUser &&
+					bcrypt.compareSync(this.data.password, attemptedUser.password)
+				) {
+					resolve(attemptedUser);
+				}
+			})
+			.catch(() => {
+				reject('Usernae/Email is not valid');
+			});
+	});
+};
+
 module.exports = User;

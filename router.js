@@ -7,6 +7,7 @@ router.get('/', userController.requireLogin, userController.home);
 router.get('/login', userController.notLoggedIn, (req, res) =>
 	res.render('login', { pageTitle: 'Login' })
 );
+router.post('/login', userController.notLoggedIn, userController.login);
 // Registration Routes
 router.get('/register', userController.notLoggedIn, (req, res) =>
 	res.render('register', { pageTitle: 'Register', backendMessage: [] })
