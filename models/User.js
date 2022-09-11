@@ -93,9 +93,14 @@ User.prototype.register = function () {
 				let salt = bcrypt.genSaltSync(10);
 				let hashedPassword = bcrypt.hashSync(this.data.password, salt);
 				this.data.password = hashedPassword;
-				usersCollection.create(this.data).then((generatedUser) => {
-					console.log(generatedUser);
-				});
+				usersCollection
+					.create(this.data)
+					.then((generatedUser) => {
+						resolve(generatedUser);
+					})
+					.catch(() => {
+						this.errors.push('Try again later');
+					});
 			}
 		}
 	});

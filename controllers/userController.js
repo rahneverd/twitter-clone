@@ -1,15 +1,16 @@
 const User = require('../models/User');
 
-exports.home = function () {
-	res.render('home');
-};
-
 exports.requireLogin = (req, res, next) => {
 	if (req.session && req.session.user) {
+		console.log(req.session);
 		return next();
 	} else {
 		res.redirect('/login');
 	}
+};
+
+exports.home = function (req, res) {
+	res.render('home');
 };
 
 exports.notLoggedIn = function (req, res, next) {
@@ -25,8 +26,11 @@ exports.register = function (req, res) {
 	let payload = req.body;
 	user
 		.register()
-		.then()
-		.catch((message) => {
+		.then(function (generatedUser) {
+			req.session.user = generatedUser;
+			res.redirect('/');
+		})
+		.catch(function (message) {
 			payload.backendMessage = message;
 			res.render('register', payload);
 		});
