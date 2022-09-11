@@ -9,7 +9,7 @@ router.get('/login', userController.notLoggedIn, (req, res) =>
 );
 // Registration Routes
 router.get('/register', userController.notLoggedIn, (req, res) =>
-	res.render('register', { pageTitle: 'Register' })
+	res.render('register', { pageTitle: 'Register', backendMessage: [] })
 );
 router.post('/register', userController.notLoggedIn, userController.register);
 module.exports = router;
