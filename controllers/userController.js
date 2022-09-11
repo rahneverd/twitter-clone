@@ -47,6 +47,7 @@ exports.login = function (req, res) {
 		})
 		.catch((message) => {
 			payload.errorMessage = message;
-			res.redirect('/login', payload);
+			console.log(payload);
+			res.render('login', payload);
 		});
 };
