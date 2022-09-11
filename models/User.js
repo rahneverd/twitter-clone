@@ -89,7 +89,7 @@ User.prototype.register = function () {
 			if (this.errors.length) {
 				reject(this.errors);
 			} else {
-				//create user
+				//creating new user
 				let salt = bcrypt.genSaltSync(10);
 				let hashedPassword = bcrypt.hashSync(this.data.password, salt);
 				this.data.password = hashedPassword;
