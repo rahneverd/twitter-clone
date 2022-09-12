@@ -10,7 +10,7 @@ exports.requireLogin = (req, res, next) => {
 };
 
 exports.home = function (req, res) {
-	res.render('home', { pageTitle: 'Twitter Clone by Rahneverd' });
+	res.render('home', { pageTitle: 'Home' });
 };
 
 exports.notLoggedIn = function (req, res, next) {
