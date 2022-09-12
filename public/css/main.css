@@ -53,7 +53,7 @@ nav a:hover {
 .mainSectionContainer {
 	padding: 0;
 	border-left: 1px solid var(--lightGray);
-	border-left: 1px solid var(--lightGray);
+	border-right: 1px solid var(--lightGray);
 	display: flex;
 	flex-direction: column;
 }
