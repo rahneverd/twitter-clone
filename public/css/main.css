@@ -1,5 +1,6 @@
 :root {
 	--blue: #1fa2f1;
+	--hoverBg: #d4edff;
 }
 
 a {
@@ -33,4 +34,10 @@ nav a {
 
 nav a.blue {
 	color: var(--blue);
+}
+
+nav a:hover {
+	background-color: var(--hoverBg);
+	color: var(--blue);
+	border-radius: 50%;
 }
