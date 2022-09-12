@@ -1,0 +1,25 @@
+a {
+	color: inherit;
+}
+nav {
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	height: 100%;
+	/* justify-content: center; */
+}
+
+nav a {
+	display: block;
+	padding: 10px;
+	font-size: 30px;
+	width: 55px;
+	height: 55px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+nav a.blue {
+	color: blue;
+}
