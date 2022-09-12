@@ -51,3 +51,9 @@ exports.login = function (req, res) {
 			res.render('login', payload);
 		});
 };
+
+exports.logout = function (req, res) {
+	req.session.destroy(() => {
+		res.redirect('/login');
+	});
+};

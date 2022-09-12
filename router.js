@@ -14,3 +14,5 @@ router.get('/register', userController.notLoggedIn, (req, res) =>
 );
 router.post('/register', userController.notLoggedIn, userController.register);
 module.exports = router;
+// Logout route
+router.get('/logout', userController.requireLogin, userController.logout);
