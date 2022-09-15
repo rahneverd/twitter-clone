@@ -1,5 +1,6 @@
 :root {
 	--blue: #1fa2f1;
+	--blueLight: #9bd1f9;
 	--hoverBg: #d4edff;
 	--lightGray: rgb(230, 236, 240);
 	--spacing: 15px;
@@ -99,9 +100,22 @@ nav a:hover {
 	padding-left: var(--spacing);
 }
 
-#TweettextArea {
+.textAreaContainer textarea {
 	width: 100%;
 	border: none;
 	resize: none;
+	outline: none;
 	font-size: 19px;
+}
+
+#submitTweetButton {
+	background-color: var(--blue);
+	color: #fff;
+	border: none;
+	border-radius: 40px;
+	padding: 7px 15px;
+}
+
+#submitTweetButton:disabled {
+	background-color: var(--blueLight);
 }
