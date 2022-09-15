@@ -10,7 +10,11 @@ exports.requireLogin = (req, res, next) => {
 };
 
 exports.home = function (req, res) {
-	res.render('home', { pageTitle: 'Home' });
+	payload = {
+		userLoggedIn: req.session.user,
+		pageTitle: 'Home',
+	};
+	res.render('home', payload);
 };
 
 exports.notLoggedIn = function (req, res, next) {
