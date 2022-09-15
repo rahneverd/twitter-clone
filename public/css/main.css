@@ -99,7 +99,7 @@ nav a:hover {
 	padding-left: var(--spacing);
 }
 
-.TweettextArea {
+#TweettextArea {
 	width: 100%;
 	border: none;
 	resize: none;
