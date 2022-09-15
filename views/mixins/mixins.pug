@@ -2,3 +2,5 @@ mixin createTweetForm(userLoggedIn)
   .tweetFormContainer
     .userImageContainer
       img(src=userLoggedIn.profilePic, alt="User's profile picture")
+    .textAreaContainer 
+      textarea#tweetTextArea(placeholder="What's happening?") 
