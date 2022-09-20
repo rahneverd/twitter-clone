@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const userController = require('./controllers/userController');
 
+// USER RELATED ROUTES
 // Home Route
 router.get('/', userController.requireLogin, userController.home);
 // Login route
@@ -16,3 +17,6 @@ router.post('/register', userController.notLoggedIn, userController.register);
 module.exports = router;
 // Logout route
 router.get('/logout', userController.requireLogin, userController.logout);
+
+// POST RELATED ROUTES
+// Create Post

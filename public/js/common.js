@@ -7,3 +7,8 @@ $('#tweetTextArea').keyup((event) => {
 		$('#submitTweetButton').prop('disabled', true);
 	}
 });
+
+$('#submitTweetButton').click((event) => {
+	let button = $(event.target);
+	let tweetBox = $('#tweetTextArea');
+});
