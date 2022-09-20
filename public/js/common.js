@@ -15,5 +15,7 @@ $('#submitTweetButton').click((event) => {
 	const tweet = {
 		content: tweetBox.val(),
 	};
-	$.post('/posts/create', tweet, (tweetData, status, xhr) => {});
+	$.post('/posts/create', tweet, (tweetData, status, xhr) => {
+		console.log(tweetData);
+	});
 });

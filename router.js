@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userController = require('./controllers/userController');
+const tweetController = require('./controllers/tweetController');
 
 // USER RELATED ROUTES
 // Home Route
@@ -20,4 +21,4 @@ router.get('/logout', userController.requireLogin, userController.logout);
 
 // POST RELATED ROUTES
 // Create Post
-router.post('/posts/create');
+router.post('/posts/create', tweetController.createPost);
