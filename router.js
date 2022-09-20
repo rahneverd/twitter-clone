@@ -20,3 +20,4 @@ router.get('/logout', userController.requireLogin, userController.logout);
 
 // POST RELATED ROUTES
 // Create Post
+router.post('/posts/create');
