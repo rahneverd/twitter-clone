@@ -9,6 +9,11 @@ $('#tweetTextArea').keyup((event) => {
 });
 
 $('#submitTweetButton').click((event) => {
-	let button = $(event.target);
-	let tweetBox = $('#tweetTextArea');
+	const button = $(event.target);
+	const tweetBox = $('#tweetTextArea');
+
+	const tweet = {
+		content: tweetBox.val(),
+	};
+	$.post('/post/create', tweet, (tweetData, status, xhr) => {});
 });
