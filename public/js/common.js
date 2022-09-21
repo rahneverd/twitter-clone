@@ -11,9 +11,9 @@ $('#tweetTextArea').keyup((event) => {
 $('#submitTweetButton').click((event) => {
 	const button = $(event.target);
 	const tweetBox = $('#tweetTextArea');
-
 	const tweet = {
 		content: tweetBox.val(),
+		author: 'author',
 	};
 	$.post('/posts/create', tweet, (tweetData, status, xhr) => {
 		console.log(tweetData);

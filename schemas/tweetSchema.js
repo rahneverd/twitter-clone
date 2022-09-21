@@ -1,41 +1,23 @@
 const mongoose = require('mongoose');
-
-const userSchema = new mongoose.Schema(
+const tweetSchema = new mongoose.Schema(
 	{
-		firstName: {
+		content: {
 			type: String,
 			required: true,
 			trim: true,
 		},
-		lastName: {
-			type: String,
+		author: {
+			type: mongoose.ObjectId,
 			required: true,
-			trim: true,
+			ref: 'User',
 		},
-		username: {
-			type: String,
-			required: true,
-			trim: true,
-			unique: true,
-		},
-		email: {
-			type: String,
-			required: true,
-			trim: true,
-			unique: true,
-		},
-		password: {
-			type: String,
-			required: true,
-		},
-		profilePic: {
-			type: String,
-			default: '/images/profilePic.png',
+		pinned: {
+			type: Boolean,
 		},
 	},
 	{ timestamps: true }
 );
 
-let UserModelSchema = mongoose.model('User', userSchema);
+let TweetModelSchema = mongoose.model('Tweet', tweetSchema);
 
-module.exports = UserModelSchema;
+module.exports = TweetModelSchema;
