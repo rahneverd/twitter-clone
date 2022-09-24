@@ -119,3 +119,14 @@ nav a:hover {
 #submitTweetButton:disabled {
 	background-color: var(--blueLight);
 }
+
+/* Styling main page tweets layout  */
+.tweet {
+	display: flex;
+	flex-direction: column;
+}
+
+.mainContentContainer {
+	display: flex;
+	flex-direction: row;
+}
