@@ -11,3 +11,13 @@ exports.createPost = function (req, res) {
 			res.status(400).send(err);
 		});
 };
+
+exports.feed = function (req, res) {
+	Tweet.feed()
+		.then((feed) => {
+			res.send(feed);
+		})
+		.catch((err) => {
+			res.send(err);
+		});
+};

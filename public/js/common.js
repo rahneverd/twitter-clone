@@ -13,7 +13,6 @@ $('#submitTweetButton').click((event) => {
 	const tweetBox = $('#tweetTextArea');
 	const data = { tweet: tweetBox.val() };
 	$.post('/posts/create', data, (tweet, status, xhr) => {
-		console.log(tweet);
 		var tweetHtml = createTweetLayout(tweet);
 		$('#tweetsContainer').prepend(tweetHtml);
 		tweetBox.val('');
@@ -37,6 +36,17 @@ function createTweetLayout(tweet) {
 									<span>${tweet.content}</span>
 								</div>
 								<div class='footer'>
+									<div class='tweetButtonsContainer'>
+										<button>
+											<i class="fa-regular fa-comment"></i>
+										</button>
+										<button>
+											<i class="fa-solid fa-retweet"></i>
+										</button>
+										<button>
+											<i class="fa-regular fa-heart"></i>
+										</button>
+									</div>
 									
 								</div>
 							</div>

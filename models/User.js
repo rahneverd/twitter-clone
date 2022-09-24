@@ -127,15 +127,4 @@ User.prototype.login = function () {
 	});
 };
 
-User.populate = function (data) {
-	data = {
-		email: data.email,
-		firstName: data.firstName,
-		lastName: data.lastName,
-		profilePic: data.profilePic,
-		username: data.username,
-	};
-	return data;
-};
-
 module.exports = User;

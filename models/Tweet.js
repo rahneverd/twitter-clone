@@ -33,14 +33,27 @@ Tweet.prototype.create = function () {
 			rej(this.errors);
 		} else if (!this.errors.length) {
 			createdTweet = await tweetsCollection.create(this.data);
-			createdTweet = await userscollection.populate(createdTweet, {
-				path: 'author',
-			});
-			createdTweet.author = User.populate(createdTweet.author);
+			createdTweet = await tweetsCollection
+				.findById(createdTweet._id)
+				.populate('author', '-password');
 			res(createdTweet);
 		} else {
 			rej('Try again later!');
 		}
+	});
+};
+
+Tweet.feed = function () {
+	return new Promise((rej, res) => {
+		tweetsCollection
+			.find()
+			.populate('author', '-password')
+			.then(async (feed) => {
+				res(feed);
+			})
+			.catch((err) => {
+				rej(err);
+			});
 	});
 };
 

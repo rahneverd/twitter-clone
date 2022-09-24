@@ -5,6 +5,7 @@
 	--lightGray: rgb(230, 236, 240);
 	--spacing: 15px;
 	--greyText: rgb(101, 119, 134);
+	--greyButtonText: rgba(0, 0, 0, 0.34);
 }
 
 a {
@@ -55,6 +56,12 @@ nav a:hover {
 	background-color: var(--hoverBg);
 	color: var(--blue);
 	border-radius: 50%;
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	color: var(--greyButtonText);
 }
 
 .mainSectionContainer {
@@ -150,4 +157,34 @@ nav a:hover {
 
 .displayName {
 	font-weight: bold;
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+}
+
+.footer .tweetButtonsContainer {
+	flex: 1;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer .tweetButtonsContainer button {
+	padding: 2px 5px;
+}
+
+.footer .tweetButtonsContainer button:hover {
+	background-color: #d4edff;
+	color: var(--blue);
+	border-radius: 50%;
+}
+
+.header a:hover {
+	text-decoration: underline;
+}
+
+.header a,
+.header span {
+	padding-right: 5px;
 }

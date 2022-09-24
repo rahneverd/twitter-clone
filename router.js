@@ -26,4 +26,5 @@ router.post(
 	userController.requireLogin,
 	tweetController.createPost
 );
+router.get('/posts/feed', userController.requireLogin, tweetController.feed);
 //

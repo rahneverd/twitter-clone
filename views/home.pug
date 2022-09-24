@@ -2,3 +2,6 @@ extends templates/main-template.pug
 block content
   +createTweetForm(userLoggedIn)
   div#tweetsContainer
+
+block scripts
+  script(src="/js/home.js") 
