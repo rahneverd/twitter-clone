@@ -147,3 +147,7 @@ nav a:hover {
 .date {
 	color: var(--greyText);
 }
+
+.displayName {
+	font-weight: bold;
+}

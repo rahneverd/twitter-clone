@@ -29,7 +29,7 @@ function createTweetLayout(tweet) {
 							</div>
 							<div class='tweetContentContainer'>
 								<div class='header'>
-									<a href='/profile/${tweet.author.username}'>${tweet.author.firstName} ${tweet.author.lastName}</a>
+									<a href='/profile/${tweet.author.username}' class='displayName'>${tweet.author.firstName} ${tweet.author.lastName}</a>
 									<span class='username'>@${tweet.author.username}</span>
 									<span class='date'>${tweet.createdAt}</span>
 								</div>
