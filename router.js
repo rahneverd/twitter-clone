@@ -21,4 +21,9 @@ router.get('/logout', userController.requireLogin, userController.logout);
 
 // POST RELATED ROUTES
 // Create Post
-router.post('/posts/create', tweetController.createPost);
+router.post(
+	'/posts/create',
+	userController.requireLogin,
+	tweetController.createPost
+);
+//
