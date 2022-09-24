@@ -4,6 +4,7 @@
 	--hoverBg: #d4edff;
 	--lightGray: rgb(230, 236, 240);
 	--spacing: 15px;
+	--greyText: rgb(101, 119, 134);
 }
 
 a {
@@ -140,4 +141,9 @@ nav a:hover {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
+}
+
+.username,
+.date {
+	color: var(--greyText);
 }
