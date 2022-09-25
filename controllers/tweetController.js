@@ -23,9 +23,11 @@ exports.feed = function (req, res) {
 };
 
 exports.like = function (req, res) {
-	Tweet.like(req.body._id, req.session.user._id)
+	Tweet.like(req.body._id, req.session.user)
 		.then((newTweet) => {
 			res.send(newTweet);
 		})
-		.catch();
+		.catch((err) => {
+			console.log(err);
+		});
 };

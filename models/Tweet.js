@@ -58,32 +58,48 @@ Tweet.feed = function () {
 	});
 };
 
-Tweet.like = function (postId, userId) {
+Tweet.like = function (postId, user, callBack) {
 	return new Promise((resolve, reject) => {
-		tweetsCollection.findById(postId).then((tweet) => {
-			liked = tweet.likes.find((like) => (like = userId));
-			if (!liked) {
-				tweetsCollection
-					.findByIdAndUpdate(
-						postId,
-						{ $push: { likes: userId } },
-						{ safe: true, upsert: true, new: true }
-					)
-					.then((newTweet) => {
-						resolve(newTweet);
-					});
-			} else {
-				tweetsCollection
-					.findByIdAndUpdate(
-						postId,
-						{ $pull: { likes: userId } },
-						{ safe: true, upsert: true, new: true }
-					)
-					.then((newTweet) => {
-						resolve(newTweet);
-					});
-			}
-		});
+		liked = user.likes.includes(postId);
+		if (!liked) {
+			tweetsCollection
+				.findByIdAndUpdate(
+					postId,
+					{ $push: { likes: user._id } },
+					{ safe: true, upsert: true, new: true }
+				)
+				.then((newTweet) => {
+					userscollection
+						.findByIdAndUpdate(
+							user._id,
+							{ $push: { likes: postId } },
+							{ safe: true, upsert: true, new: true }
+						)
+						.then((newUser) => {
+							callBack(newUser);
+						});
+					resolve(newTweet);
+				});
+		} else {
+			tweetsCollection
+				.findByIdAndUpdate(
+					postId,
+					{ $pull: { likes: user._id } },
+					{ safe: true, upsert: true, new: true }
+				)
+				.then((newTweet) => {
+					userscollection
+						.findByIdAndUpdate(
+							user._id,
+							{ $pull: { likes: postId } },
+							{ safe: true, upsert: true, new: true }
+						)
+						.then((newUser) => {
+							callBack(newUser);
+						});
+					resolve(newTweet);
+				});
+		}
 	});
 };
 
