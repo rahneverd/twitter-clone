@@ -23,6 +23,16 @@ $('#submitTweetButton').click((event) => {
 $(document).on('click', '.likeButton', (event) => {
 	var button = $(event.target);
 	var tweetId = getTweetId(button);
+
+	$.ajax({
+		url: '/posts/like',
+		type: 'PUT',
+		data: `_id=${tweetId}`,
+		success: (tweetData) => {
+			console.log(tweetData);
+		},
+	});
+
 	console.log(tweetId);
 });
 
