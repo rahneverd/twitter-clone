@@ -23,7 +23,9 @@ exports.feed = function (req, res) {
 };
 
 exports.like = function (req, res) {
-	Tweet.like(req.body._id, req.session.user)
+	Tweet.like(req.body._id, req.session.user, (newUser) => {
+		req.session.user = newUser;
+	})
 		.then((newTweet) => {
 			res.send(newTweet);
 		})
