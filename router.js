@@ -27,4 +27,5 @@ router.post(
 	tweetController.createPost
 );
 router.get('/posts/feed', userController.requireLogin, tweetController.feed);
+router.put('/posts/like', userController.requireLogin, tweetController.like);
 //

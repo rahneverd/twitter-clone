@@ -32,8 +32,6 @@ $(document).on('click', '.likeButton', (event) => {
 			console.log(tweetData);
 		},
 	});
-
-	console.log(tweetId);
 });
 
 function getTweetId(element) {

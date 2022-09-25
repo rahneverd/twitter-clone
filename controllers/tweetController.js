@@ -21,3 +21,11 @@ exports.feed = function (req, res) {
 			res.send(err);
 		});
 };
+
+exports.like = function (req, res) {
+	Tweet.like(req.body._id, req.session.user._id)
+		.then((newTweet) => {
+			res.send(newTweet);
+		})
+		.catch();
+};

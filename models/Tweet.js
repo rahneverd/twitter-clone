@@ -45,16 +45,45 @@ Tweet.prototype.create = function () {
 };
 
 Tweet.feed = function () {
-	return new Promise((rej, res) => {
+	return new Promise((resolve, reject) => {
 		tweetsCollection
 			.find()
 			.populate('author', '-password')
 			.then(async (feed) => {
-				res(feed);
+				resolve(feed);
 			})
 			.catch((err) => {
-				rej(err);
+				reject(err);
 			});
+	});
+};
+
+Tweet.like = function (postId, userId) {
+	return new Promise((resolve, reject) => {
+		tweetsCollection.findById(postId).then((tweet) => {
+			liked = tweet.likes.find((like) => (like = userId));
+			if (!liked) {
+				tweetsCollection
+					.findByIdAndUpdate(
+						postId,
+						{ $push: { likes: userId } },
+						{ safe: true, upsert: true, new: true }
+					)
+					.then((newTweet) => {
+						resolve(newTweet);
+					});
+			} else {
+				tweetsCollection
+					.findByIdAndUpdate(
+						postId,
+						{ $pull: { likes: userId } },
+						{ safe: true, upsert: true, new: true }
+					)
+					.then((newTweet) => {
+						resolve(newTweet);
+					});
+			}
+		});
 	});
 };
 
