@@ -29,7 +29,7 @@ $(document).on('click', '.likeButton', (event) => {
 		type: 'PUT',
 		data: `_id=${tweetId}`,
 		success: (tweetData) => {
-			console.log(tweetData);
+			button.find('span').text(tweetData.likes.length || '');
 		},
 	});
 });
@@ -71,6 +71,7 @@ function createTweetLayout(tweet) {
 										</button>
 										<button class='likeButton'>
 											<i class="fa-regular fa-heart"></i>
+											<span>${tweet.likes.length || ''}</span>
 										</button>
 									</div>
 									
