@@ -33,7 +33,10 @@ Tweet.prototype.create = function () {
 			rej(this.errors);
 		} else if (!this.errors.length) {
 			createdTweet = await tweetsCollection.create(this.data);
-			createdTweet.author = Tweet.populate(createdTweet.author);
+			createdTweet = await userscollection.populate(createdTweet, {
+				path: 'author',
+			});
+			createdTweet.author = User.populate(createdTweet.author);
 			res(createdTweet);
 		} else {
 			rej('Try again later!');

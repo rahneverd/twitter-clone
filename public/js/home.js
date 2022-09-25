@@ -1,6 +1,8 @@
 $(document).ready(() => {
 	$.get('/posts/feed', (feed) => {
-		outputTweets(feed, $('#tweetsContainer'));
+		if (feed.length) {
+			outputTweets(feed, $('#tweetsContainer'));
+		}
 	});
 });
 

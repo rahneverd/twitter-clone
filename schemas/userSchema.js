@@ -32,6 +32,12 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			default: '/images/profilePic.png',
 		},
+		likes: [
+			{
+				type: mongoose.ObjectId,
+				ref: 'Tweet',
+			},
+		],
 	},
 	{ timestamps: true }
 );

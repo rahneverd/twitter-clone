@@ -11,6 +11,12 @@ const tweetSchema = new mongoose.Schema(
 			required: true,
 			ref: 'User',
 		},
+		likes: [
+			{
+				type: mongoose.ObjectId,
+				ref: 'User',
+			},
+		],
 		pinned: {
 			type: Boolean,
 		},
