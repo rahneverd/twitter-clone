@@ -6,6 +6,7 @@
 	--spacing: 15px;
 	--greyText: rgb(101, 119, 134);
 	--greyButtonText: rgba(0, 0, 0, 0.34);
+	--red: rgb(226, 34, 94);
 }
 
 a {
@@ -192,4 +193,8 @@ button span {
 .header a,
 .header span {
 	padding-right: 5px;
+}
+
+.tweetButtonsContainer .likeButton.active {
+	color: var(--red);
 }

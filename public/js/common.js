@@ -30,6 +30,11 @@ $(document).on('click', '.likeButton', (event) => {
 		data: `_id=${tweetId}`,
 		success: (tweetData) => {
 			button.find('span').text(tweetData.likes.length || '');
+			if (tweetData.likes.includes(userLoggedInString._id)) {
+				button.addClass('active');
+			} else {
+				button.removeClass('active');
+			}
 		},
 	});
 });
@@ -66,10 +71,14 @@ function createTweetLayout(tweet) {
 										<button>
 											<i class="fa-regular fa-comment"></i>
 										</button>
-										<button>
+										<button class='retweetButton'>
 											<i class="fa-solid fa-retweet"></i>
 										</button>
-										<button class='likeButton'>
+										<button class='likeButton ${
+											tweet.likes.includes(userLoggedInString._id)
+												? 'active'
+												: ''
+										}'>
 											<i class="fa-regular fa-heart"></i>
 											<span>${tweet.likes.length || ''}</span>
 										</button>

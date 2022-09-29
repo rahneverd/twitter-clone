@@ -12,6 +12,7 @@ exports.requireLogin = (req, res, next) => {
 exports.home = function (req, res) {
 	payload = {
 		userLoggedIn: req.session.user,
+		userLoggedInString: JSON.stringify(req.session.user),
 		pageTitle: 'Home',
 	};
 	res.render('home', payload);
